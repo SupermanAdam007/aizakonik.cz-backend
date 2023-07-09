@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, HTTPException
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
@@ -7,6 +9,8 @@ from pydantic import BaseModel
 
 from app import constants
 from app.config import settings
+
+log = logging.getLogger("app")
 
 router = APIRouter()
 
@@ -41,5 +45,8 @@ async def prediction(data: PredictionRequest):
     # question = "Do kdy můžu odstoupit od smlouvy bez udání důvodu?"
     query = f"Užitečně a podrobně (zajímají mě především konkrétní paragrafy) odpověz v českém jazyce maximálně 500 slovy na otázku: '{question}'"
     result = qa({"query": query})
+
+    log.info(f"query: {query}")
+    log.info(f"result: {result}")
 
     return result
