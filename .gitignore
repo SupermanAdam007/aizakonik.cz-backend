@@ -1,3 +1,5 @@
+.idea
+
 scripts/data
 app/data
 **/data.zip
