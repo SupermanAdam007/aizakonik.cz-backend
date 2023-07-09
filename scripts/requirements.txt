@@ -1,0 +1,7 @@
+pytesseract
+pdf2image
+langchain
+openai
+chromadb
+unstructured
+tiktoken
